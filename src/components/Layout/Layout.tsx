@@ -1,10 +1,17 @@
-import React from 'react'
-type Props = {}
+import { ReactNode } from 'react';
+import { Grid, Typography } from '@mui/material';
+type Props = {
+  children: ReactNode;
+};
 
 const Layout = (props: Props) => {
-  return ( 
-    <></>
-  )
-}
+  const { children } = props;
+  return (
+    <Grid container>
+      <Grid item md={6} />
+      <Grid item md={6} />
+    </Grid>
+  );
+};
 
-export default Layout
+export default Layout;
