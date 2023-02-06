@@ -5,16 +5,21 @@ import { store } from './app/store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
+import { StyledEngineProvider } from '@mui/material/styles';
+import { CssBaseline } from '@mui/material';
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const container= document.getElementById('root')!;
+const container = document.getElementById('root')!;
 const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <StyledEngineProvider injectFirst>
+      <CssBaseline />
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </StyledEngineProvider>
   </React.StrictMode>
 );
 
