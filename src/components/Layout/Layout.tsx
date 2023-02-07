@@ -1,17 +1,38 @@
-import { ReactNode } from 'react';
-import { Grid, Typography } from '@mui/material';
-type Props = {
-  children: ReactNode;
-};
+import { FC, ReactNode, useState } from 'react';
+import { Box } from '@mui/material';
 
-const Layout = (props: Props) => {
-  const { children } = props;
+import { Navigation } from '../Navigation';
+import { Header } from '../Header';
+import { Footer } from '../Footer';
+
+import { FOOTER_HEIGHT } from '../../utils/constants';
+
+interface Props {
+  children: ReactNode;
+}
+export const Layout: FC<Props> = ({ children }) => {
+  const [open, setOpen] = useState(false);
+  const toggleNavigation = () => setOpen((status) => !status);
+
   return (
-    <Grid container>
-      <Grid item md={6} />
-      <Grid item md={6} />
-    </Grid>
+    <Box sx={{ minHeight: '100vh' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          minHeight: ` calc(100vh - ${FOOTER_HEIGHT}px)`,
+        }}
+      >
+        {/* <Box component='header'>
+          <Header toggleNavigation={toggleNavigation} />
+        </Box> */}
+        {/* <Navigation open={open} handleClose={toggleNavigation} /> */}
+        <Box component='main' sx={{ flexGrow: 1, p: 3, pt: 10 }}>
+          {children}
+        </Box>
+      </Box>
+      {/* <Box component='footer'>
+        <Footer />
+      </Box> */}
+    </Box>
   );
 };
-
-export default Layout;
