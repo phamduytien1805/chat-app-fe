@@ -1,9 +1,8 @@
 import { useMemo, useState } from 'react';
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
 
 import { Layout } from './components/Layout';
-import { PageDefault } from './components/PageDefault';
 
 import { AuthenticationContext, ThemeModeContext } from './contexts';
 import { AppClient } from './clients';
@@ -13,6 +12,7 @@ import { getAppTheme } from './styles/theme';
 import { DARK_MODE_THEME, LIGHT_MODE_THEME } from './utils/constants';
 import routes from './routes';
 import { PrivateRoute } from './approutes';
+import PublicRoutes from './approutes/PublicRoutes';
 
 function App() {
   const [mode, setMode] = useState<typeof LIGHT_MODE_THEME | typeof DARK_MODE_THEME>(DARK_MODE_THEME);
@@ -32,9 +32,6 @@ function App() {
   const privateRoutes: AppRoute[] = [];
   const publicRoutes: AppRoute[] = [];
 
-  // const addRoute = (route: AppRoute) => (
-  //   <Route key={route.key} path={route.path} component={route.component || PageDefault} exact />
-  // );
   for (const route of routes) {
     if (route.private) {
       privateRoutes.push(route);
@@ -42,6 +39,8 @@ function App() {
       publicRoutes.push(route);
     }
   }
+  console.log('privateRoutes', privateRoutes);
+  console.log('publicRoutes', publicRoutes);
 
   return (
     <AuthenticationContext.Provider value={appClient}>
@@ -51,11 +50,11 @@ function App() {
           <Router>
             <Switch>
               <Layout>
-                {/* {[...routes, ...HomeRoute].map((route: AppRoute) =>
-                  route.subRoutes ? route.subRoutes.map((item: AppRoute) => addRoute(item)) : addRoute(route)
-                )} */}
                 {privateRoutes.map((route) => (
-                  <PrivateRoute key={route.key} path={route.path} exact />
+                  <PrivateRoute key={route.key} path={route.path} component={route.component} exact />
+                ))}
+                {publicRoutes.map((route) => (
+                  <PublicRoutes key={route.key} path={route.path} component={route.component} exact />
                 ))}
               </Layout>
             </Switch>

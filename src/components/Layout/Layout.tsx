@@ -16,23 +16,13 @@ export const Layout: FC<Props> = ({ children }) => {
 
   return (
     <Box sx={{ minHeight: '100vh' }}>
-      <Box
-        sx={{
-          display: 'flex',
-          minHeight: ` calc(100vh - ${FOOTER_HEIGHT}px)`,
-        }}
-      >
-        {/* <Box component='header'>
+      {/* <Box component='header'>
           <Header toggleNavigation={toggleNavigation} />
         </Box> */}
-        {/* <Navigation open={open} handleClose={toggleNavigation} /> */}
-        <Box component='main' sx={{ flexGrow: 1, p: 3, pt: 10 }}>
-          {children}
-        </Box>
-      </Box>
-      {/* <Box component='footer'>
-        <Footer />
-      </Box> */}
+      {/* <Navigation open={open} handleClose={toggleNavigation} /> */}
+      {/* <Box component='main' sx={{ flexGrow: 1, p: 3, pt: 10 }}> */}
+      {children}
+      {/* </Box> */}
     </Box>
   );
 };
