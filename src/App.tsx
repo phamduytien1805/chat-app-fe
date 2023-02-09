@@ -16,6 +16,8 @@ import PublicRoutes from './approutes/PublicRoutes';
 
 function App() {
   const [mode, setMode] = useState<typeof LIGHT_MODE_THEME | typeof DARK_MODE_THEME>(DARK_MODE_THEME);
+  const [locale, setLocale] = useState(localStorage.getItem('lang') || 'en');
+
   const appClient = new AppClient();
 
   const themeMode = useMemo(
@@ -39,8 +41,10 @@ function App() {
       publicRoutes.push(route);
     }
   }
-  console.log('privateRoutes', privateRoutes);
-  console.log('publicRoutes', publicRoutes);
+
+  const setLocaleContext = (locale: string) => {
+    setLocale(locale);
+  };
 
   return (
     <AuthenticationContext.Provider value={appClient}>

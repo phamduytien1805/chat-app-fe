@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import { Helmet } from 'react-helmet';
 
 import App from './App';
-
-import { APP_DESCRIPTION, APP_TITLE } from './utils/constants';
+import './locales/i18n';
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,0 +1,9 @@
+{
+  "hello": "hello",
+  "welcome_to": "Welcome to ...",
+  "user_name": "User Name",
+  "password": "Password",
+  "remember_me": "Remember me",
+  "forget_password": "Forget Password",
+  "login": "login"
+}
