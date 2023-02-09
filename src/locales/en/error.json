@@ -1,0 +1,5 @@
+{
+  "required_information": "This information is required",
+  "min_range": "{{field}} must be at least {{length}} characters",
+  "max_range": "{{field}} must not exceed {{length}} characters"
+}

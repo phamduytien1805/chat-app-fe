@@ -8,10 +8,10 @@ interface Props {}
 
 export const AuthenticationPage: FC<Props> = (props) => (
   <Grid container style={{ placeItems: 'center' }}>
-    <Grid item md={6}>
+    <Grid item md={6} lg={6}>
       <Image imgUrl={img1} />
     </Grid>
-    <Grid item md={6}>
+    <Grid item sm={12} xs={12} md={6} lg={6}>
       <Box display={'flex'} justifyContent={'center'}>
         <LoginForm width={'45%'} />
       </Box>
