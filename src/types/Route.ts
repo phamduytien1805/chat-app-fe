@@ -42,7 +42,7 @@ export type Route = {
    * @example
    * "/dashboard"
    */
-  path?: string;
+  path?: string | string[];
 
   /**
    * The component referenced by the route

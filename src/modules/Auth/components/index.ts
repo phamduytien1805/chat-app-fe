@@ -1,3 +1,4 @@
 import { Image } from './Image';
 import LoginForm from './LoginForm';
-export { Image, LoginForm };
+import RegisterForm from './RegisterForm';
+export { Image, LoginForm, RegisterForm };

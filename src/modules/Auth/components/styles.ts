@@ -16,7 +16,6 @@ const ImageBox = styled(Box, { shouldForwardProp: (props) => props !== 'imgUrl' 
 const Flex = {
   display: 'flex',
   justifyContent: 'space-between',
-  alignItems: 'center',
 };
 const FormContainer = styled(Box)<InputProps>(({ theme }) => ({
   ...Flex,

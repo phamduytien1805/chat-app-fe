@@ -6,6 +6,6 @@ export default [
     title: 'Authentication',
     description: 'Authentication',
     component: AuthenticationPage,
-    path: '/login',
+    path: ['/login', '/register'],
   },
 ];

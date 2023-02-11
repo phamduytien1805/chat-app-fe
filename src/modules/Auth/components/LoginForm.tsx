@@ -1,5 +1,5 @@
 import { Box, Button, Checkbox, Link, TextField, Typography, useTheme } from '@mui/material';
-import { useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
@@ -19,7 +19,7 @@ interface LoginFormInput {
   password: string;
 }
 
-const LoginForm = (props: Props) => {
+const LoginForm: FC<Props> = (props) => {
   const { width } = props;
   const theme = useTheme();
   const { t } = useTranslation();
@@ -46,7 +46,7 @@ const LoginForm = (props: Props) => {
 
   return (
     <FormContainer width={width} gap={3}>
-      <FlexBox gap={1} flexDirection={'column'}>
+      <FlexBox gap={1} flexDirection={'column'} alignItems={'center'}>
         <img src={logo2} height={theme.spacing(7)} />
         <Typography component={'div'} variant='h4'>
           {t('welcome_to', { ns: 'auth' })}
@@ -80,7 +80,7 @@ const LoginForm = (props: Props) => {
         </Button>
         <Typography component={'div'} variant='body2' marginRight={'auto'}>
           {t('need_an_account', { ns: 'auth' })}
-          <Link href='#' variant='body2' underline='hover' marginLeft={theme.spacing(1)}>
+          <Link href='/register' variant='body2' underline='hover' marginLeft={theme.spacing(1)}>
             {t('register', { ns: 'auth' })}
           </Link>
         </Typography>
