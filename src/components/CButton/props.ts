@@ -8,7 +8,7 @@ declare module '@mui/material/Button' {
   }
 }
 
-export type Sizes = 'small' | 'medium';
+export type Sizes = 'small' | 'medium' | 'large';
 
 export type ButtonProps = Defaults & {
   loading?: boolean;

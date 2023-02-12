@@ -7,6 +7,7 @@ import elevations from './elevations';
 interface CustomThemeProperties {
   sideBar: Record<string, any>;
   colors: Record<string, any>;
+  modeColors: Record<string, any>;
   fontSize: Record<string, any>;
   fontSizeIcon: Record<string, any>;
   fontWeight: Record<string, any>;
@@ -37,18 +38,18 @@ declare module '@mui/material/styles' {
 // A custom theme for this app
 export const themes = {
   palette: {
-    primary: {
-      main: colors.primary[40],
-      light: colors.primary[40],
-      dark: colors.primary[80],
-      contrastText: colors.white,
-    },
-    secondary: {
-      main: colors.secondary[40],
-      light: colors.secondary[40],
-      dark: colors.secondary[80],
-      contrastText: colors.white,
-    },
+    // primary: {
+    //   main: colors.primary[100],
+    //   light: colors.primary[100],
+    //   dark: colors.secondary[100],
+    //   contrastText: colors.white,
+    // },
+    // secondary: {
+    //   main: colors.primary[100],
+    //   light: colors.primary[100],
+    //   dark: colors.secondary[100],
+    //   contrastText: colors.white,
+    // },
   },
   typography: {
     fontFamily,
@@ -103,7 +104,6 @@ export const themes = {
   zIndex: {},
   // ===COLORS===
   colors, // / New color System
-
   globalColors: {
     placeholderColor: colors.gray[500],
   },

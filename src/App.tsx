@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch } from 'react-router-dom';
 
 import { AuthenticationContext, ThemeModeContext } from './contexts';
 import { AppClient } from './clients';
+import 'material-symbols/rounded.css';
 
 import { Route as AppRoute } from './types';
 import { getAppTheme } from './styles/theme';
@@ -13,7 +14,7 @@ import { PrivateRoute } from './approutes';
 import PublicRoutes from './approutes/PublicRoutes';
 
 function App() {
-  const [mode, setMode] = useState<typeof LIGHT_MODE_THEME | typeof DARK_MODE_THEME>(DARK_MODE_THEME);
+  const [mode, setMode] = useState<typeof LIGHT_MODE_THEME | typeof DARK_MODE_THEME>(LIGHT_MODE_THEME);
   const [locale, setLocale] = useState(localStorage.getItem('lang') || 'en');
 
   const appClient = new AppClient();
