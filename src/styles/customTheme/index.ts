@@ -7,7 +7,6 @@ import elevations from './elevations';
 interface CustomThemeProperties {
   sideBar: Record<string, any>;
   colors: Record<string, any>;
-  modeColors: Record<string, any>;
   fontSize: Record<string, any>;
   fontSizeIcon: Record<string, any>;
   fontWeight: Record<string, any>;

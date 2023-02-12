@@ -5,8 +5,14 @@ import CIcon from './CIcon';
 type Props = {};
 
 const Demo = (props: Props) => (
-  <Box display={'flex'} justifyContent={'center'} mt={2}>
+  <Box display={'flex'} alignItems={'center'} justifyContent={'center'} mt={2} gap={2}>
     <CButton variant='contained' size='large' loading={true} endIcon={<CIcon icon='info' />}>
+      {'asdasd'}
+    </CButton>
+    <CButton variant='contained' size='medium' endIcon={<CIcon icon='info' />}>
+      {'asdasd'}
+    </CButton>
+    <CButton variant='contained' size='small'>
       {'asdasd'}
     </CButton>
   </Box>

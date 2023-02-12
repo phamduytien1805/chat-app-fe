@@ -1,6 +1,5 @@
 import { Button, Theme, styled } from '@mui/material';
 import typography from '../../styles/customTheme/typography';
-import { DARK_MODE_THEME } from '../../utils/constants';
 const getColorByMode = (mode: string) => {};
 const getElevationByMode = (mode: string) => {};
 const getPaddingBySize = (theme: Theme, size?: string) => {
@@ -18,16 +17,16 @@ const getPaddingBySize = (theme: Theme, size?: string) => {
 const getDisabledColor = (theme: Theme, variant?: string) => {
   switch (variant) {
     case 'contained':
-      return theme.palette.mode === DARK_MODE_THEME ? theme.modeColors.primary[100] : theme.modeColors.primary[30];
+      return theme.colors.primary[30];
     case 'outlined':
     case 'text':
-      return theme.modeColors.primary[10];
+      return theme.colors.white;
     default:
-      return theme.modeColors.primary[30];
+      return theme.colors.primary[30];
   }
 };
 
-const CButton = styled(Button)<Record<string, any>>(({ theme, size, variant, loading }) => ({
+const CButton = styled(Button)<Record<string, any>>(({ theme, size, variant }) => ({
   borderRadius: theme.spacing(2),
   display: 'flex',
   flexDirection: 'row',
@@ -36,61 +35,59 @@ const CButton = styled(Button)<Record<string, any>>(({ theme, size, variant, loa
   gap: theme.spacing(0.5),
   padding: getPaddingBySize(theme, size),
   '&.MuiButton-contained': {
-    backgroundColor: theme.modeColors.primary[100],
+    backgroundColor: theme.colors.primary[100],
     color: theme.colors.white,
     '&:hover': {
-      backgroundColor: theme.modeColors.primary[80],
+      backgroundColor: theme.colors.primary[80],
       boxShadow: theme.elevations.lightDepth01,
     },
     '&:active': {
-      backgroundColor: theme.modeColors.primary[90],
+      backgroundColor: theme.colors.primary[90],
     },
   },
   '&.MuiButton-outlined': {
-    backgroundColor: theme.modeColors.primary[10],
-    color: theme.palette.mode === DARK_MODE_THEME ? theme.modeColors.primary[60] : theme.colors.black,
-    border: `1px solid ${theme.modeColors.primary[60]}`,
+    backgroundColor: theme.colors.primary[10],
+    color: theme.colors.black,
+    border: `1px solid ${theme.colors.primary[60]}`,
     '&:hover': {
-      backgroundColor: theme.palette.mode !== DARK_MODE_THEME && theme.modeColors.primary[20],
+      backgroundColor: theme.colors.primary[20],
       boxShadow: theme.elevations.lightDepth01,
     },
     '&:active': {
-      backgroundColor: theme.modeColors.primary[30],
+      backgroundColor: theme.colors.primary[30],
     },
   },
   '&.MuiButton-text': {
-    backgroundColor: theme.modeColors.primary[10],
+    backgroundColor: theme.colors.primary[10],
     border: 'none',
-    color: theme.palette.mode === DARK_MODE_THEME ? theme.modeColors.primary[60] : theme.colors.black,
-    '&:hover': theme.palette.mode !== DARK_MODE_THEME && {
-      backgroundColor: theme.modeColors.primary[20],
+    '&:hover': {
+      backgroundColor: theme.colors.primary[20],
     },
-    '&:active': theme.palette.mode !== DARK_MODE_THEME && {
-      backgroundColor: theme.modeColors.primary[30],
+    '&:active': {
+      backgroundColor: theme.colors.primary[30],
     },
   },
   '&.Mui-disabled': {
-    borderColor: variant === 'outlined' ? `${theme.modeColors.primary[30]} !important` : 'unset',
-    color: theme.palette.mode !== DARK_MODE_THEME && theme.modeColors.primary[60],
-    opacity: theme.palette.mode === DARK_MODE_THEME && !loading && variant === 'contained' && 0.6,
-    backgroundColor: !loading && getDisabledColor(theme, variant),
+    borderColor: variant === 'outlined' ? `${theme.colors.primary[30]} !important` : 'none',
+    color: theme.colors.primary[60],
+    backgroundColor: getDisabledColor(theme, variant),
     '& .MuiButton-startIcon': {
-      color: theme.modeColors.primary[60],
+      color: theme.colors.primary[60],
     },
     '& .MuiButton-endIcon': {
-      color: theme.modeColors.primary[60],
+      color: theme.colors.primary[60],
     },
   },
   '&.MuiButton-sizeSmall': {
-    ...typography.titleSmall,
+    ...typography.labelSmall,
     borderRadius: theme.spacing(1.25),
   },
   '&.MuiButton-sizeMedium': {
-    ...typography.titleMedium,
+    ...typography.labelMedium,
     borderRadius: theme.spacing(1.5),
   },
   '&.MuiButton-sizeLarge': {
-    ...typography.titleMedium,
+    ...typography.labelLarge,
     borderRadius: theme.spacing(2),
   },
   '&.MuiButton-iconSizeSmall': {

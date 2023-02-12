@@ -21,7 +21,6 @@ const MyButton = forwardRef<HTMLButtonElement, ButtonProps>(
         size={size}
         startIcon={startIcon}
         endIcon={endIcon}
-        loading={loading}
         {...rest}
       />
     );
