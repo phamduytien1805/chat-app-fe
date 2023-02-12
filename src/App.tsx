@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { CssBaseline, ThemeProvider } from '@mui/material';
+import { CssBaseline, GlobalStyles, ThemeProvider } from '@mui/material';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 
 import { AuthenticationContext, ThemeModeContext } from './contexts';
@@ -12,7 +12,7 @@ import { DARK_MODE_THEME, LIGHT_MODE_THEME } from './utils/constants';
 import routes from './routes';
 import { PrivateRoute } from './approutes';
 import PublicRoutes from './approutes/PublicRoutes';
-
+import globalStyles from './globalStyles';
 function App() {
   const [mode, setMode] = useState<typeof LIGHT_MODE_THEME | typeof DARK_MODE_THEME>(LIGHT_MODE_THEME);
   const [locale, setLocale] = useState(localStorage.getItem('lang') || 'en');
@@ -47,6 +47,7 @@ function App() {
 
   return (
     <AuthenticationContext.Provider value={appClient}>
+      <GlobalStyles styles={globalStyles} />
       <ThemeModeContext.Provider value={themeMode}>
         <ThemeProvider theme={theme}>
           <CssBaseline />

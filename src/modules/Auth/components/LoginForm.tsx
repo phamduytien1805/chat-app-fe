@@ -8,6 +8,7 @@ import { Image } from './Image';
 import logo2 from '../../../assets/logo/logo2.png';
 import { useTranslation } from 'react-i18next';
 import { PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH, USER_MAX_LENGTH, USER_MIN_LENGTH } from '../utils/contants';
+import { useHistory } from 'react-router-dom';
 
 interface Props {
   onSubmit?: void;
@@ -23,6 +24,8 @@ const LoginForm: FC<Props> = (props) => {
   const { width } = props;
   const theme = useTheme();
   const { t } = useTranslation();
+  const history = useHistory();
+
   useEffect(() => {}, []);
 
   const validationSchema = Yup.object().shape({
@@ -80,7 +83,12 @@ const LoginForm: FC<Props> = (props) => {
         </Button>
         <Typography component={'div'} variant='body2' marginRight={'auto'}>
           {t('need_an_account', { ns: 'auth' })}
-          <Link href='/register' variant='body2' underline='hover' marginLeft={theme.spacing(1)}>
+          <Link
+            onClick={() => history.push('/register')}
+            variant='body2'
+            underline='hover'
+            marginLeft={theme.spacing(1)}
+          >
             {t('register', { ns: 'auth' })}
           </Link>
         </Typography>

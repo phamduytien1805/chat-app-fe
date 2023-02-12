@@ -7,6 +7,7 @@ import { FlexBox, FormContainer } from './styles';
 import { Image } from './Image';
 import logo2 from '../../../assets/logo/logo2.png';
 import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router-dom';
 
 interface Props {
   width?: string;
@@ -15,6 +16,7 @@ interface Props {
 const RegisterForm: FC<Props> = ({ width }) => {
   const theme = useTheme();
   const { t } = useTranslation();
+  const history = useHistory();
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
@@ -53,7 +55,7 @@ const RegisterForm: FC<Props> = ({ width }) => {
         <Button variant='contained' fullWidth>
           {t('sign_up', { ns: 'auth' })}
         </Button>
-        <Link href='/login' variant='body2' underline='hover' marginLeft={theme.spacing(1)}>
+        <Link onClick={() => history.push('login')} variant='body2' underline='hover' marginLeft={theme.spacing(1)}>
           {t('already_have_an_account', { ns: 'auth' })}
         </Link>
       </FlexBox>
