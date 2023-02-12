@@ -2,8 +2,6 @@ import { useMemo, useState } from 'react';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 
-import { Layout } from './components/Layout';
-
 import { AuthenticationContext, ThemeModeContext } from './contexts';
 import { AppClient } from './clients';
 
@@ -53,14 +51,12 @@ function App() {
           <CssBaseline />
           <Router>
             <Switch>
-              <Layout>
-                {privateRoutes.map((route) => (
-                  <PrivateRoute key={route.key} path={route.path} component={route.component} exact />
-                ))}
-                {publicRoutes.map((route) => (
-                  <PublicRoutes key={route.key} path={route.path} component={route.component} exact />
-                ))}
-              </Layout>
+              {privateRoutes.map((route) => (
+                <PrivateRoute key={route.key} path={route.path} component={route.component} exact />
+              ))}
+              {publicRoutes.map((route) => (
+                <PublicRoutes key={route.key} path={route.path} component={route.component} exact />
+              ))}
             </Switch>
           </Router>
         </ThemeProvider>

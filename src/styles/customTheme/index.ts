@@ -1,7 +1,21 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import colors from './colors.json';
 import { fontFamily, fontSize, fontSizeIcon, fontWeight } from './font';
 import typography from './typography';
 import { borderInput, borderRadius } from './border';
+import elevations from './elevations';
+interface CustomThemeProperties {
+  sideBar: Record<string, any>;
+  colors: Record<string, any>;
+  fontSize: Record<string, any>;
+  fontSizeIcon: Record<string, any>;
+  fontWeight: Record<string, any>;
+  borderInput: Record<string, any>;
+  borderRadius: Record<string, any>;
+  transitionDefault: string;
+  boxShadowDefault: string;
+  elevations: Record<string, any>;
+}
 
 declare module '@mui/material/styles' {
   interface Palette {
@@ -16,17 +30,8 @@ declare module '@mui/material/styles' {
   interface Components {
     MuiClockPicker: Record<string, unknown>;
   }
-  interface ThemeOptions {
-    sideBar: Record<string, unknown>;
-    colors: Record<string, unknown>;
-    fontSize: Record<string, unknown>;
-    fontSizeIcon: Record<string, unknown>;
-    fontWeight: Record<string, unknown>;
-    borderInput: Record<string, unknown>;
-    borderRadius: Record<string, unknown>;
-    transitionDefault: string;
-    boxShadowDefault: string;
-  }
+  interface ThemeOptions extends CustomThemeProperties {}
+  interface Theme extends CustomThemeProperties {}
 }
 
 // A custom theme for this app
@@ -62,15 +67,6 @@ export const themes = {
         input: {
           '&:-webkit-autofill': {
             webkitBoxShadow: '0 0 0 1000px white inset',
-          },
-        },
-      },
-    },
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          '&:hover': {
-            boxShadow: 'none',
           },
         },
       },
@@ -124,4 +120,5 @@ export const themes = {
   transitionDefault: 'all 200ms ease-in-out',
   // ===BOX SHADOW DEFAULT===
   boxShadowDefault: 'rgba(235,241,249,1) 0 0 0 3px',
+  elevations,
 };
